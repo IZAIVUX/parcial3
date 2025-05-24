@@ -3,8 +3,10 @@
 ## Estructura
 - `Main.java`: Punto de entrada
 - `frmMatriz.java`: Formulario principal
-- `matrix.txt`: Datos guardados
+- `matriz.txt`: **Generado automáticamente** al guardar datos
 
-## Ejecución
-1. Abrir en NetBeans
-2. Ejecutar `Formularios.Main`
+## Cómo usar
+1. Ejecutar `Formularios.Main`
+2. Llenar la matriz
+3. **Guardar**: Crea/sobreescribe `matriz.txt`
+4. **Listar**: Muestra el contenido del archivo
