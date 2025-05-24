@@ -2,7 +2,7 @@
 
 ## Estructura
 - `Main.java`: Punto de entrada
-- `frmMatrix.java`: Formulario principal
+- `frmMatriz.java`: Formulario principal
 - `matrix.txt`: Datos guardados
 
 ## Ejecución

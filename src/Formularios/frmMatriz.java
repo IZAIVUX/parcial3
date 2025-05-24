@@ -6,6 +6,9 @@ package Formularios;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class frmMatriz extends javax.swing.JFrame {
 /**
@@ -494,7 +497,35 @@ public class frmMatriz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-    JOptionPane.showMessageDialog(this, "Matriz guardada correctamente");
+    try {
+        // 1. Preparar los datos
+        StringBuilder contenido = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                // Obtiene el texto del JTextField correspondiente
+                JTextField campo = txtMatriz[i][j];
+                String valor = campo.getText().trim();
+                contenido.append(valor.isEmpty() ? "0" : valor); // Usa "0" si está vacío
+                if (j < 5) contenido.append(","); // Separador entre columnas
+            }
+            contenido.append("\n"); // Nueva línea por fila
+        }
+
+        // 2. Guardar en archivo
+        Files.write(Paths.get("matrix.txt"), contenido.toString().getBytes());
+        
+        // 3. Mostrar confirmación
+        JOptionPane.showMessageDialog(this, 
+            "Matriz guardada exitosamente en matrix.txt", 
+            "Éxito", 
+            JOptionPane.INFORMATION_MESSAGE);
+            
+    } catch (IOException ex) {
+        JOptionPane.showMessageDialog(this,
+            "Error al guardar: " + ex.getMessage(),
+            "Error",
+            JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
